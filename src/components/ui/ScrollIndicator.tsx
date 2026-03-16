@@ -5,9 +5,9 @@ export function ScrollIndicator() {
     <div
       className="absolute bottom-12 left-1/2"
       style={{
-        color: "var(--ash-silver)",
+        color: "rgba(255,255,255,0.4)",
         fontSize: "20px",
-        animation: "scrollBounce 2s ease-in-out infinite",
+        animation: "scrollBounce 2.5s ease-in-out infinite",
         transform: "translateX(-50%)",
       }}
       aria-hidden="true"
@@ -15,8 +15,8 @@ export function ScrollIndicator() {
       ∨
       <style>{`
         @keyframes scrollBounce {
-          0%, 100% { transform: translateX(-50%) translateY(0); }
-          50% { transform: translateX(-50%) translateY(8px); }
+          0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+          50% { transform: translateX(-50%) translateY(8px); opacity: 0.7; }
         }
       `}</style>
     </div>

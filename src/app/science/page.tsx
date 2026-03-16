@@ -1,343 +1,110 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
-export const metadata: Metadata = {
-  title: "The Science — Genome-Microbiome Integration | Ōma Analytics",
-  description:
-    "A technical overview of genome-microbiome interaction and the clinical rationale for unified analysis.",
-};
 
 export default function SciencePage() {
   return (
     <>
-      {/* ==================== HERO ==================== */}
+      {/* ==================== HERO (70vh) ==================== */}
       <section
-        className="section-dark relative flex flex-col items-center justify-center text-center"
-        style={{ minHeight: "70vh", padding: "120px 20px 80px" }}
+        className="section-dark flex items-center justify-center"
+        style={{ minHeight: "70vh", padding: "160px 20px 120px", position: "relative" }}
       >
-        <div style={{ maxWidth: "var(--content-max-width)" }}>
-          <h4 className="section-label" style={{ marginBottom: "24px" }}>THE SCIENCE</h4>
-          <h1
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 300,
-              fontSize: "clamp(32px, 4vw, 52px)",
-              color: "var(--ivory-white)",
-              lineHeight: 1.1,
-              letterSpacing: "0.02em",
-              marginBottom: "24px",
-            }}
-          >
-            The genome predicts. The microbiome confirms. Ōma integrates.
+        {/* Subtle topographic pattern */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.04, backgroundImage: "repeating-radial-gradient(circle at 25% 25%, transparent 0, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px)" }} />
+
+        <div className="relative z-10 text-center" style={{ maxWidth: "900px" }}>
+          <p className="section-label" style={{ marginBottom: "24px" }}>The Science</p>
+          <h1 style={{ marginBottom: "32px", fontSize: "clamp(48px, 8vw, 72px)" }}>
+            The science of integration.
           </h1>
-          <p
-            style={{
-              fontFamily: "var(--font-body)",
-              fontStyle: "italic",
-              fontSize: "clamp(16px, 1.5vw, 20px)",
-              color: "var(--ash-silver)",
-              lineHeight: 1.5,
-            }}
-          >
-            A technical overview of genome-microbiome interaction and the clinical rationale for
-            unified analysis.
+          <p style={{ fontSize: "22px", color: "var(--ice-silver)", lineHeight: 1.5, maxWidth: "640px", margin: "0 auto" }}>
+            Why your genome and microbiome must be read together — and what happens when they are.
           </p>
         </div>
       </section>
 
-      {/* ==================== WHY INTEGRATION MATTERS ==================== */}
-      <section className="section-light" style={{ padding: "var(--spacing-section) 20px" }}>
-        <div className="mx-auto" style={{ maxWidth: "var(--content-max-width)" }}>
+      {/* ==================== THE THESIS ==================== */}
+      <section className="section-dark" style={{ padding: "var(--section-pad) 20px" }}>
+        <div className="mx-auto" style={{ maxWidth: "var(--content-max)" }}>
           <ScrollReveal>
-            <h4 className="section-label" style={{ marginBottom: "16px" }}>WHY INTEGRATION MATTERS</h4>
-            <h2 style={{ color: "var(--obsidian-navy)", marginBottom: "24px" }}>
-              Single-omic analysis is structurally incomplete.
-            </h2>
-            <p style={{ marginBottom: "16px" }}>
-              Genomic testing identifies variants that influence enzymatic function, immune
-              recognition, detoxification capacity, and neurotransmitter metabolism. Microbiome
-              testing quantifies the microbial populations that modulate those same pathways from the
-              gut.
-            </p>
-            <p style={{ marginBottom: "16px" }}>
-              These are not parallel systems. They are interdependent.
-            </p>
-            <p style={{ marginBottom: "16px" }}>
-              A patient&apos;s <em className="gene-name" style={{ fontSize: "inherit" }}>FUT2</em> non-secretor status predicts
-              reduced <em className="species-name" style={{ fontSize: "inherit" }}>Bifidobacterium</em> abundance and diminished
-              mucosal immunity. Their GI-MAP either confirms or contradicts that prediction. A
-              patient&apos;s <em className="gene-name" style={{ fontSize: "inherit" }}>MTHFR</em> C677T variant reduces folate
-              metabolism — but <em className="species-name" style={{ fontSize: "inherit" }}>Bifidobacterium</em> species produce
-              folate. When both are compromised, the methylation deficit compounds in ways neither
-              test alone reveals.
-            </p>
-            <p>
-              Interpreting either data set without the other produces an incomplete clinical picture.
-              Ōma was built to eliminate that structural limitation.
-            </p>
+            <p className="section-label" style={{ marginBottom: "16px" }}>The Thesis</p>
+            <h2 style={{ marginBottom: "48px" }}>One system. Not two.</h2>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ==================== GENOME → MICROBIOME ==================== */}
-      <section className="section-dark" style={{ padding: "var(--spacing-section) 20px" }}>
-        <div className="mx-auto" style={{ maxWidth: "var(--content-max-width)" }}>
-          <ScrollReveal>
-            <h4 className="section-label" style={{ marginBottom: "16px" }}>GENOME → MICROBIOME</h4>
-            <h2 style={{ color: "var(--ivory-white)", marginBottom: "32px" }}>
-              How genetic variants shape microbial ecology.
-            </h2>
-            <p style={{ color: "var(--ash-silver)", marginBottom: "24px" }}>
-              Research has established several direct mechanisms by which host genetics influence gut
-              microbiome composition:
-            </p>
-          </ScrollReveal>
-
-          {/* FUT2 */}
-          <ScrollReveal delay={100}>
-            <div className="mb-12">
-              <h3
-                style={{
-                  color: "var(--ivory-white)",
-                  fontSize: "22px",
-                  marginBottom: "12px",
-                }}
-              >
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>FUT2</em> — Secretor Status
-              </h3>
-              <p style={{ color: "var(--ash-silver)" }}>
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>FUT2</em> encodes the enzyme determining whether ABO blood group antigens are
-                secreted into mucosal surfaces. Non-secretors — approximately 20% of the population —
-                exhibit significantly reduced microbiome diversity, lower{" "}
-                <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Bifidobacterium</em> abundance,
-                diminished butyrate production, and altered mucosal immune function. This single
-                variant fundamentally changes which probiotic strains, prebiotic substrates, and
-                mucosal support strategies are appropriate for a given patient.
+          <ScrollReveal delay={200}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)" }}>
+                Your genome and your microbiome are not separate systems. They are one integrated biological machine.
               </p>
-            </div>
-          </ScrollReveal>
-
-          {/* HLA */}
-          <ScrollReveal delay={100}>
-            <div className="mb-12">
-              <h3
-                style={{
-                  color: "var(--ivory-white)",
-                  fontSize: "22px",
-                  marginBottom: "12px",
-                }}
-              >
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>HLA</em> — Immune-Microbiome Interface
-              </h3>
-              <p style={{ color: "var(--ash-silver)" }}>
-                Human Leukocyte Antigen genes determine which microbial species the immune system
-                tolerates. HLA-DQ2 and HLA-DQ8 alter gut microbial composition even before gluten
-                exposure. HLA-B27 creates susceptibility to molecular mimicry — where elevated{" "}
-                <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Klebsiella pneumoniae</em>{" "}
-                (quantifiable on GI-MAP) can trigger inflammatory arthritis through cross-reactive
-                immune activation.
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)" }}>
+                Your DNA determines which enzymes you produce, which pathways are strong, and which are vulnerable. Your gut bacteria modulate those same pathways — producing cofactors, metabolizing nutrients, regulating gene expression in real time.
               </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Methylation */}
-          <ScrollReveal delay={100}>
-            <div className="mb-12">
-              <h3
-                style={{
-                  color: "var(--ivory-white)",
-                  fontSize: "22px",
-                  marginBottom: "12px",
-                }}
-              >
-                Methylation Pathways — <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>MTHFR</em>,{" "}
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>PEMT</em>,{" "}
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>CBS</em>,{" "}
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>BHMT</em>
-              </h3>
-              <p style={{ color: "var(--ash-silver)" }}>
-                Methylation variants do not operate in isolation from the gut. Impaired methylation
-                reduces stomach acid production, diminishes glutathione synthesis, and increases
-                oxidative stress in the intestinal lining — each of which selects for pathogenic over
-                commensal bacteria. Meanwhile, the microbiome itself produces folate, B12, and SAMe
-                precursors that feed methylation. The cycle is bidirectional.
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)" }}>
+                Any analysis that looks at one without the other is incomplete. Full stop.
               </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Detox */}
-          <ScrollReveal delay={100}>
-            <div>
-              <h3
-                style={{
-                  color: "var(--ivory-white)",
-                  fontSize: "22px",
-                  marginBottom: "12px",
-                }}
-              >
-                Detoxification — <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>CYP450</em>,{" "}
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>GST</em>,{" "}
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>NAT</em>
-              </h3>
-              <p style={{ color: "var(--ash-silver)" }}>
-                Phase I and Phase II detoxification capacity determines how the body processes
-                microbial metabolites, endotoxins, and xenobiotics.{" "}
-                <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>GSTM1</em> null deletions reduce
-                glutathione conjugation. When combined with elevated beta-glucuronidase-producing
-                bacteria on GI-MAP, the result is a compounded detoxification impairment that neither
-                data set reveals independently.
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)", fontWeight: 600 }}>
+                Ōma exists because this integration didn&apos;t have a platform. Now it does.
               </p>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ==================== MICROBIOME → GENOME ==================== */}
-      <section className="section-light" style={{ padding: "var(--spacing-section) 20px" }}>
-        <div className="mx-auto" style={{ maxWidth: "var(--content-max-width)" }}>
+      {/* ==================== GENOME → MICROBIOME (LIGHT) ==================== */}
+      <section className="section-light" style={{ padding: "var(--section-pad) 20px" }}>
+        <div className="mx-auto" style={{ maxWidth: "var(--container-max)" }}>
           <ScrollReveal>
-            <h4 className="section-label" style={{ marginBottom: "16px" }}>MICROBIOME → GENOME</h4>
-            <h2 style={{ color: "var(--obsidian-navy)", marginBottom: "24px" }}>
-              How microbial metabolites regulate gene expression.
-            </h2>
-            <p style={{ marginBottom: "16px" }}>
-              The microbiome does not merely coexist with the host genome. It modulates which genes
-              are expressed and to what degree.
+            <p className="section-label" style={{ marginBottom: "16px", color: "var(--radiant-gold)" }}>Genome → Microbiome</p>
+            <h2 style={{ marginBottom: "64px" }}>Your DNA shapes your gut.</h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--text-secondary-light)", maxWidth: "var(--content-max)", marginBottom: "64px" }}>
+              This isn&apos;t theory. These mechanisms are published, replicated, and clinically validated.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={100}>
-            <div className="mb-12">
-              <h3 style={{ color: "var(--obsidian-navy)", fontSize: "22px", marginBottom: "12px" }}>
-                Butyrate as Epigenetic Regulator
-              </h3>
-              <p>
-                Butyrate — produced by{" "}
-                <em className="species-name" style={{ fontSize: "inherit" }}>Faecalibacterium prausnitzii</em>,{" "}
-                <em className="species-name" style={{ fontSize: "inherit" }}>Roseburia</em>, and{" "}
-                <em className="species-name" style={{ fontSize: "inherit" }}>Eubacterium rectale</em> — is a potent histone
-                deacetylase inhibitor. It directly alters chromatin structure and gene transcription.
-                A patient with low butyrate-producing bacteria and variants in butyrate-responsive
-                signaling pathways faces a fundamentally different clinical situation than a patient
-                with only one of those findings.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            <div className="mb-12">
-              <h3 style={{ color: "var(--obsidian-navy)", fontSize: "22px", marginBottom: "12px" }}>
-                Microbial Metabolites and DNA Methylation
-              </h3>
-              <p>
-                Gut bacteria produce the cofactors required for DNA methylation — folate, B12,
-                betaine, and SAMe precursors. A patient with{" "}
-                <em className="gene-name" style={{ fontSize: "inherit" }}>MTHFR</em> C677T and depleted folate-producing
-                bacteria faces a compounded methylation crisis invisible to either test alone.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            <div>
-              <h3 style={{ color: "var(--obsidian-navy)", fontSize: "22px", marginBottom: "12px" }}>
-                The Second Genome
-              </h3>
-              <p>
-                The gut microbiome encodes 100–150 times more genes than the human genome. These
-                microbial genes produce enzymes, metabolites, and signaling molecules that interact
-                directly with human gene expression. Interpreting the human genome without reference
-                to the microbial genome is, by definition, interpreting less than 1% of the
-                patient&apos;s total genetic information.
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ==================== CLINICAL APPLICATIONS ==================== */}
-      <section className="section-dark" style={{ padding: "var(--spacing-section) 20px" }}>
-        <div className="mx-auto" style={{ maxWidth: "var(--container-max-width)" }}>
-          <ScrollReveal>
-            <h4 className="section-label" style={{ marginBottom: "16px" }}>WHAT ŌMA REVEALS</h4>
-            <h2 style={{ color: "var(--ivory-white)", marginBottom: "48px" }}>
-              Clinical patterns visible only through integrated analysis.
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ScrollReveal delay={0}>
-              <div className="card on-dark border-integrated" style={{ height: "100%" }}>
-                <h3 style={{ color: "var(--ivory-white)", fontSize: "20px", marginBottom: "12px" }}>
-                  Autoimmune Risk Assessment
-                </h3>
-                <p style={{ fontSize: "16px", color: "var(--ash-silver)" }}>
-                  Genetic predisposition (<em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>PTPN2</em>,
-                  HLA patterns,{" "}
-                  <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>CTLA-4</em>) combined with
-                  intestinal permeability markers (zonulin), pathogen-triggered molecular mimicry
-                  (<em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Klebsiella</em>,{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Proteus</em>), and mucosal immune
-                  status (secretory IgA). Two of the three legs of autoimmune activation — genetic
-                  susceptibility and gut barrier compromise — assessed in a single integrated report.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={100}>
-              <div className="card on-dark border-integrated" style={{ height: "100%" }}>
-                <h3 style={{ color: "var(--ivory-white)", fontSize: "20px", marginBottom: "12px" }}>
-                  Neurotransmitter-Gut Axis
-                </h3>
-                <p style={{ fontSize: "16px", color: "var(--ash-silver)" }}>
-                  <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>TPH2</em> variants affecting
-                  serotonin synthesis,{" "}
-                  <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>COMT</em> warrior/worrier status,{" "}
-                  <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>DRD2</em> dopamine receptor
-                  variants — cross-referenced with serotonin-producing bacteria, GABA-producing{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Lactobacillus</em> and{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Bifidobacterium</em>, and
-                  tryptophan-metabolizing species. Ninety percent of serotonin is produced in the
-                  gut. The genomic and microbial data must be read together.
-                </p>
-              </div>
-            </ScrollReveal>
-
+          <div style={{ display: "flex", flexDirection: "column", gap: "80px", maxWidth: "var(--content-max)" }}>
+            {/* FUT2 */}
             <ScrollReveal delay={200}>
-              <div className="card on-dark border-integrated" style={{ height: "100%" }}>
-                <h3 style={{ color: "var(--ivory-white)", fontSize: "20px", marginBottom: "12px" }}>
-                  Metabolic Syndrome
+              <div>
+                <h3 style={{ marginBottom: "16px" }}>
+                  <span style={{ fontFamily: "var(--font-mono)", color: "var(--electric-blue)" }}>FUT2</span> — Secretor Status
                 </h3>
-                <p style={{ fontSize: "16px", color: "var(--ash-silver)" }}>
-                  <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>SLC30A8</em> CC homozygous
-                  status (increased type 2 diabetes risk) predicts elevated{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Prevotella</em> abundance and
-                  altered glucose tolerance.{" "}
-                  <em className="gene-name" style={{ fontSize: "inherit", color: "var(--meridian-blue-light)" }}>APOE</em> variants modulate
-                  cardiovascular risk.{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Akkermansia muciniphila</em>{" "}
-                  levels — quantifiable on GI-MAP — correlate with metabolic health. Ōma maps genetic
-                  predisposition against current microbial metabolic function.
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)", marginBottom: "16px" }}>
+                  One variant. Twenty percent of the population. Non-secretors have measurably lower microbiome diversity, reduced Bifidobacterium, diminished butyrate production, and altered mucosal immunity. This changes which probiotics work for you, which prebiotics feed the right species, and which mucosal support your gut actually needs.
+                </p>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)", fontWeight: 600 }}>
+                  An analysis that doesn&apos;t know your secretor status is guessing.
                 </p>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={300}>
-              <div className="card on-dark border-integrated" style={{ height: "100%" }}>
-                <h3 style={{ color: "var(--ivory-white)", fontSize: "20px", marginBottom: "12px" }}>
-                  Pharmacomicrobiomics
+            {/* Methylation */}
+            <ScrollReveal delay={200}>
+              <div>
+                <h3 style={{ marginBottom: "16px" }}>
+                  Methylation — <span style={{ fontFamily: "var(--font-mono)", color: "var(--electric-blue)" }}>MTHFR, PEMT, CBS, BHMT</span>
                 </h3>
-                <p style={{ fontSize: "16px", color: "var(--ash-silver)" }}>
-                  Drug response depends on both CYP450 genetic variants (pharmacogenomics) and
-                  microbial drug-metabolizing capacity.{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Eggerthella lenta</em> inactivates
-                  digoxin. Microbiome composition affects metformin efficacy. Immunotherapy response
-                  rates correlate with{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Akkermansia</em> and{" "}
-                  <em className="species-name" style={{ fontSize: "inherit", color: "var(--botanical-green)" }}>Faecalibacterium</em> abundance.
-                  No commercial platform currently integrates pharmacogenomic SNPs with
-                  microbiome-based drug metabolism predictions. Ōma does.
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)", marginBottom: "16px" }}>
+                  Methylation variants don&apos;t just affect folate metabolism. Impaired methylation reduces stomach acid, depletes glutathione, and increases intestinal oxidative stress — which selects for pathogenic bacteria over commensal species. Meanwhile, your gut bacteria produce the folate, B12, and SAMe precursors that methylation depends on.
+                </p>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)", fontWeight: 600 }}>
+                  The cycle is bidirectional. You can&apos;t understand it from one side.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Detox */}
+            <ScrollReveal delay={200}>
+              <div>
+                <h3 style={{ marginBottom: "16px" }}>
+                  Detoxification — <span style={{ fontFamily: "var(--font-mono)", color: "var(--electric-blue)" }}>CYP450, GST, NAT</span>
+                </h3>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)", marginBottom: "16px" }}>
+                  Your genetic detox capacity determines how your body processes microbial metabolites and endotoxins. A GSTM1 null deletion reduces glutathione conjugation. Combine that with elevated beta-glucuronidase-producing bacteria, and you get a compounded detox impairment invisible to either test alone.
+                </p>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)", fontWeight: 600 }}>
+                  Ōma sees both sides. That&apos;s the point.
                 </p>
               </div>
             </ScrollReveal>
@@ -345,25 +112,117 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* ==================== CLOSING ==================== */}
-      <section className="section-light" style={{ padding: "var(--spacing-section) 20px" }}>
-        <div className="mx-auto" style={{ maxWidth: "var(--content-max-width)" }}>
+      {/* ==================== MICROBIOME → GENOME (DARK) ==================== */}
+      <section className="section-dark" style={{ padding: "var(--section-pad) 20px" }}>
+        <div className="mx-auto" style={{ maxWidth: "var(--container-max)" }}>
           <ScrollReveal>
-            {/* Methodology quote */}
-            <div style={{ marginBottom: "var(--spacing-subsection)" }}>
-              <div className="pull-quote">
-                Every recommendation in an Ōma report is graded by evidence quality, clinical
-                significance, and actionability. We do not speculate.
-              </div>
-            </div>
+            <p className="section-label" style={{ marginBottom: "16px" }}>Microbiome → Genome</p>
+            <h2 style={{ marginBottom: "64px" }}>Your gut rewrites the code.</h2>
+          </ScrollReveal>
 
-            <p style={{ marginBottom: "32px" }}>
-              The genome is the architecture. The microbiome is the operating environment. Clinical
-              decisions made without reference to both are decisions made with an incomplete data set.
+          <ScrollReveal delay={100}>
+            <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)", maxWidth: "var(--content-max)", marginBottom: "64px" }}>
+              The microbiome doesn&apos;t just coexist with your DNA. It tells your genes what to do.
             </p>
+          </ScrollReveal>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "80px", maxWidth: "var(--content-max)" }}>
+            {/* Butyrate */}
+            <ScrollReveal delay={200}>
+              <div>
+                <h3 style={{ marginBottom: "16px", color: "var(--pure-white)" }}>
+                  Butyrate — The Epigenetic Switch
+                </h3>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--ice-silver)" }}>
+                  Butyrate — produced by <span className="species-name">Faecalibacterium prausnitzii</span>, <span className="species-name">Roseburia</span>, and <span className="species-name">Eubacterium rectale</span> — is a histone deacetylase inhibitor. It literally alters which genes get expressed. Low butyrate producers + variants in butyrate-responsive pathways = a fundamentally different clinical picture than having just one.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Microbial Cofactors */}
+            <ScrollReveal delay={200}>
+              <div>
+                <h3 style={{ marginBottom: "16px", color: "var(--pure-white)" }}>
+                  Microbial Cofactors
+                </h3>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--ice-silver)" }}>
+                  Your gut bacteria produce the raw materials for DNA methylation — folate, B12, betaine, SAMe precursors. An <span className="gene-name">MTHFR</span> variant plus depleted folate-producing bacteria is a compounded methylation crisis that no single-test analysis would catch.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* The Second Genome */}
+            <ScrollReveal delay={200}>
+              <div>
+                <h3 style={{ marginBottom: "16px", color: "var(--pure-white)" }}>
+                  The Second Genome
+                </h3>
+                <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--ice-silver)" }}>
+                  Your microbiome encodes 150x more genes than your human DNA. Those microbial genes produce enzymes, metabolites, and signaling molecules that interact directly with your gene expression. Ignoring them means you&apos;re looking at less than 1% of the picture.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== THE ŌMA DIFFERENCE (LIGHT) ==================== */}
+      <section className="section-light" style={{ padding: "var(--section-pad) 20px" }}>
+        <div className="mx-auto" style={{ maxWidth: "var(--container-max)" }}>
+          <ScrollReveal>
+            <p className="section-label" style={{ marginBottom: "16px", color: "var(--radiant-gold)" }}>The Ōma Difference</p>
+            <h2 style={{ marginBottom: "48px" }}>Connections invisible to single-test analysis.</h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            <div style={{ maxWidth: "var(--content-max)", display: "flex", flexDirection: "column", gap: "24px", marginBottom: "48px" }}>
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--text-secondary-light)" }}>
+                Every Ōma analysis maps the space between your genome and your microbiome — the interaction layer where clinical insight actually lives.
+              </p>
+              <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)" }}>
+                Your <span className="gene-name">MTHFR C677T</span> + depleted <span className="species-name">Bifidobacterium</span> = a compounded methylation vulnerability. The genetic variant creates the weakness. The microbial depletion removes the backup system. Neither test alone tells that story.
+              </p>
+              <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)" }}>
+                Your <span className="gene-name">VDR</span> polymorphism + low <span className="species-name">Akkermansia</span> = impaired mucosal integrity driven by both genetic predisposition and microbial environment. One problem. Two causes. One integrated view.
+              </p>
+              <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)" }}>
+                Your Phase II SNPs + dysbiotic gut ecology = detox impairment invisible to either test in isolation. The genome shows the vulnerability. The microbiome shows why it&apos;s expressing.
+              </p>
+              <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)" }}>
+                This is what becomes possible when you stop reading two separate reports and start reading one integrated system.
+              </p>
+              <p style={{ fontSize: "18px", lineHeight: 1.8, color: "var(--text-secondary-light)" }}>
+                When action is needed, these insights translate directly into precise protocols — from dietary adjustments to targeted supplementation formulated from your specific data.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={300}>
             <Link href="/contact" className="btn-primary">
-              Request Practitioner Access →
+              Join the Waitlist
             </Link>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ==================== CLOSING (DARK) ==================== */}
+      <section className="section-dark" style={{ padding: "var(--section-pad) 20px" }}>
+        <div className="mx-auto" style={{ maxWidth: "var(--content-max)" }}>
+          <ScrollReveal>
+            <h2 style={{ marginBottom: "32px" }}>
+              Precision isn&apos;t a buzzword. It&apos;s a method.
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)" }}>
+                We don&apos;t use the word lightly. Every insight we generate traces back to specific variants, specific microbial populations, specific pathway interactions — documented, evidence-graded, and clinically validated.
+              </p>
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)" }}>
+                The genome is the blueprint. The microbiome is the environment. We read both. We integrate both.
+              </p>
+              <p style={{ fontSize: "20px", lineHeight: 1.7, color: "var(--ice-silver)", fontWeight: 600 }}>
+                That&apos;s the science of Ōma.
+              </p>
+            </div>
           </ScrollReveal>
         </div>
       </section>

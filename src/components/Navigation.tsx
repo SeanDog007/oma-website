@@ -18,121 +18,121 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   return (
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-200"
+      className="fixed top-0 left-0 right-0 z-50"
       style={{
-        height: "72px",
-        backgroundColor: scrolled
-          ? "rgba(10, 22, 40, 1)"
-          : "rgba(10, 22, 40, 0.95)",
-        backdropFilter: "blur(12px)",
-        borderBottom: scrolled
-          ? "1px solid rgba(155, 164, 168, 0.15)"
-          : "1px solid transparent",
+        height: "80px",
+        backgroundColor: scrolled ? "rgba(5,10,18,0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(20px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+        transition: "background-color 300ms ease, backdrop-filter 300ms ease, border-bottom 300ms ease",
       }}
     >
       <div
         className="mx-auto flex items-center justify-between h-full"
-        style={{
-          maxWidth: "var(--container-max-width)",
-          padding: "0 clamp(20px, 5vw, 80px)",
-        }}
+        style={{ maxWidth: "var(--container-max)", padding: "0 clamp(20px, 5vw, 80px)" }}
       >
         {/* Logo */}
         <Link
           href="/"
-          className="text-[var(--ivory-white)] no-underline"
+          className="no-underline"
           style={{
-            fontFamily: "var(--font-sans)",
-            fontWeight: 300,
-            fontSize: "24px",
-            letterSpacing: "0.04em",
+            fontFamily: "var(--font-primary)",
+            fontWeight: 800,
+            fontSize: "20px",
+            letterSpacing: "-0.02em",
+            color: "var(--pure-white)",
           }}
-          aria-label="Ōma Analytics home"
+          aria-label="Ōma home"
         >
           Ōma
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="no-underline transition-colors duration-200"
+              className="no-underline"
               style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 400,
+                fontFamily: "var(--font-primary)",
+                fontWeight: 500,
                 fontSize: "14px",
-                letterSpacing: "0.04em",
-                color:
-                  pathname === item.href
-                    ? "var(--copper-patina)"
-                    : "var(--ivory-white)",
-                borderBottom:
-                  pathname === item.href
-                    ? "2px solid var(--copper-patina)"
-                    : "2px solid transparent",
-                paddingBottom: "4px",
+                letterSpacing: "0.02em",
+                color: pathname === item.href ? "var(--pure-white)" : "rgba(255,255,255,0.7)",
+                transition: "color 200ms ease",
               }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--pure-white)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = pathname === item.href ? "var(--pure-white)" : "rgba(255,255,255,0.7)")}
             >
               {item.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn-secondary on-dark" style={{ padding: "10px 20px" }}>
-            Join Waitlist
+          <Link
+            href="/contact"
+            style={{
+              fontFamily: "var(--font-primary)",
+              fontWeight: 700,
+              fontSize: "13px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#050A12",
+              background: "linear-gradient(135deg, #F5A623, #FFCA28, #F5A623)",
+              padding: "10px 24px",
+              borderRadius: "0px",
+              textDecoration: "none",
+              transition: "box-shadow 200ms ease, transform 200ms ease",
+              boxShadow: "0 0 20px rgba(245,166,35,0.2)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = "0 0 40px rgba(245,166,35,0.35)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(245,166,35,0.2)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            Get Started
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — 2 lines */}
         <button
-          className="md:hidden flex flex-col justify-center items-center gap-[5px] bg-transparent border-none cursor-pointer p-2"
+          className="md:hidden flex flex-col justify-center items-center gap-[6px] bg-transparent border-none cursor-pointer p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
           <span
-            className="block w-5 transition-all duration-200"
+            className="block transition-all duration-200"
             style={{
-              height: "1.5px",
-              backgroundColor: "var(--ivory-white)",
+              width: "24px",
+              height: "2px",
+              backgroundColor: "var(--pure-white)",
               transform: mobileOpen ? "rotate(45deg) translate(3px, 3px)" : "none",
             }}
           />
           <span
-            className="block w-5 transition-all duration-200"
+            className="block transition-all duration-200"
             style={{
-              height: "1.5px",
-              backgroundColor: "var(--ivory-white)",
-              opacity: mobileOpen ? 0 : 1,
-            }}
-          />
-          <span
-            className="block w-5 transition-all duration-200"
-            style={{
-              height: "1.5px",
-              backgroundColor: "var(--ivory-white)",
+              width: "24px",
+              height: "2px",
+              backgroundColor: "var(--pure-white)",
               transform: mobileOpen ? "rotate(-45deg) translate(3px, -3px)" : "none",
             }}
           />
@@ -142,22 +142,17 @@ export function Navigation() {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 flex flex-col items-center justify-center gap-12 md:hidden"
+          className="fixed inset-0 flex flex-col items-center justify-center gap-14 md:hidden"
           style={{
-            backgroundColor: "var(--obsidian-navy)",
-            top: 0,
+            backgroundColor: "var(--void-black)",
             zIndex: 40,
+            background: "radial-gradient(circle at top right, rgba(245,166,35,0.06), transparent 50%), var(--void-black)",
           }}
         >
           <button
             onClick={() => setMobileOpen(false)}
             className="absolute top-5 right-5 bg-transparent border-none cursor-pointer"
-            style={{
-              color: "var(--ivory-white)",
-              fontFamily: "var(--font-sans)",
-              fontSize: "28px",
-              fontWeight: 300,
-            }}
+            style={{ color: "var(--pure-white)", fontSize: "28px", fontWeight: 300 }}
             aria-label="Close menu"
           >
             ×
@@ -169,18 +164,23 @@ export function Navigation() {
               onClick={() => setMobileOpen(false)}
               className="no-underline"
               style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 400,
-                fontSize: "24px",
-                color:
-                  pathname === item.href
-                    ? "var(--copper-patina)"
-                    : "var(--ivory-white)",
+                fontFamily: "var(--font-primary)",
+                fontWeight: 700,
+                fontSize: "28px",
+                color: pathname === item.href ? "var(--radiant-gold)" : "var(--pure-white)",
               }}
             >
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="btn-primary"
+            style={{ marginTop: "16px" }}
+          >
+            Get Started
+          </Link>
         </div>
       )}
     </nav>

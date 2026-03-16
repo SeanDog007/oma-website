@@ -1,63 +1,71 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian-navy: #0A1628;
-  --color-slate-graphite: #2D3436;
-  --color-ivory-white: #F5F1EB;
-  --color-meridian-blue: #1B4965;
-  --color-meridian-blue-light: #2A6A8F;
-  --color-copper-patina: #8B6F47;
-  --color-ash-silver: #9BA4A8;
-  --color-botanical-green: #4A7C59;
-  --color-convergence-violet: #6B5B73;
-  --color-terracotta: #A85432;
-  --color-deep-sage: #3D7A5F;
-  --color-card-light: #FAFAF8;
-  --color-card-dark: #0F1D33;
+  --color-void-black: #050A12;
+  --color-midnight: #0D1520;
+  --color-pure-white: #FFFFFF;
+  --color-electric-blue: #0066FF;
+  --color-radiant-gold: #F5A623;
+  --color-signal-green: #00E676;
+  --color-ice-silver: #8A94A6;
+  --color-fusion-violet: #7C3AED;
 
-  --font-display: 'Source Serif 4', Georgia, serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
-  --font-mono: 'IBM Plex Mono', 'Menlo', monospace;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
 }
 
 :root {
-  --obsidian-navy: #0A1628;
-  --slate-graphite: #2D3436;
-  --ivory-white: #F5F1EB;
-  --meridian-blue: #1B4965;
-  --meridian-blue-light: #2A6A8F;
-  --copper-patina: #8B6F47;
-  --ash-silver: #9BA4A8;
-  --botanical-green: #4A7C59;
-  --convergence-violet: #6B5B73;
-  --terracotta: #A85432;
-  --deep-sage: #3D7A5F;
-  --card-light: #FAFAF8;
-  --card-dark: #0F1D33;
+  /* Colors */
+  --void-black: #050A12;
+  --midnight: #0D1520;
+  --pure-white: #FFFFFF;
+  --electric-blue: #0066FF;
+  --radiant-gold: #F5A623;
+  --signal-green: #00E676;
+  --ice-silver: #8A94A6;
+  --fusion-violet: #7C3AED;
 
-  --spacing-section: 120px;
-  --spacing-subsection: 64px;
-  --spacing-element: 32px;
-  --content-max-width: 680px;
-  --container-max-width: 1200px;
+  /* Text colors */
+  --text-primary-light: #050A12;
+  --text-secondary-light: #374151;
+  --text-muted-light: #6B7280;
+  --text-primary-dark: #FFFFFF;
+  --text-secondary-dark: #8A94A6;
+  --text-muted-dark: rgba(138, 148, 166, 0.6);
 
-  --radius-subtle: 2px;
-  --transition-fast: 200ms ease;
-  --transition-medium: 400ms ease;
+  /* Gradients */
+  --gradient-gold: linear-gradient(135deg, #F5A623, #FFCA28, #F5A623);
+  --gradient-dark: linear-gradient(180deg, #050A12, #0D1520);
+  --gradient-glow: radial-gradient(ellipse, rgba(245,166,35,0.08) 0%, rgba(0,102,255,0.05) 40%, transparent 65%);
+
+  /* Spacing */
+  --section-pad: 200px;
+  --section-pad-tablet: 140px;
+  --section-pad-mobile: 100px;
+  --content-max: 720px;
+  --container-max: 1400px;
+  --element-gap: 48px;
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-medium: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 800ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (max-width: 1023px) {
-  :root {
-    --spacing-section: 80px;
-  }
+  :root { --section-pad: 140px; }
 }
-
 @media (max-width: 767px) {
-  :root {
-    --spacing-section: 64px;
-    --spacing-subsection: 48px;
-  }
+  :root { --section-pad: 100px; }
 }
 
 /* Base styles */
@@ -66,10 +74,10 @@ html {
 }
 
 body {
-  background-color: var(--ivory-white);
-  color: var(--slate-graphite);
-  font-family: var(--font-body);
-  font-size: 18px;
+  background-color: var(--void-black);
+  color: var(--ice-silver);
+  font-family: var(--font-primary);
+  font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -77,216 +85,180 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
+  font-family: var(--font-primary);
 }
 
 h1 {
-  font-weight: 300;
-  font-size: 64px;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
+  font-weight: 800;
+  font-size: clamp(56px, 10vw, 140px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
 }
 
 h2 {
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
 }
 
 h3 {
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 @media (max-width: 767px) {
-  h1 { font-size: 36px; }
-  h2 { font-size: 28px; }
-  h3 { font-size: 22px; }
+  h1 { font-size: 56px; }
+  h2 { font-size: 36px; }
+  h3 { font-size: 28px; }
   body { font-size: 16px; }
 }
 
-/* Section label (H4 style) */
+/* Section label */
 .section-label {
-  font-family: var(--font-sans);
+  font-family: var(--font-primary);
   font-weight: 600;
-  font-size: 14px;
-  line-height: 1.2;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  line-height: 1.0;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--copper-patina);
+  color: var(--radiant-gold);
 }
 
 @media (max-width: 767px) {
-  .section-label {
-    font-size: 13px;
-  }
-}
-
-/* Body text on dark backgrounds */
-.text-on-dark {
-  color: var(--ash-silver);
-}
-
-.text-on-dark h1,
-.text-on-dark h2,
-.text-on-dark h3 {
-  color: var(--ivory-white);
-}
-
-/* Mono text for data/genes */
-.font-data {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-}
-
-/* Gene and species names - italic per scientific convention */
-.gene-name {
-  font-family: var(--font-mono);
-  font-style: italic;
-  color: var(--meridian-blue);
-  font-size: 14px;
-}
-
-.species-name {
-  font-family: var(--font-mono);
-  font-style: italic;
-  color: var(--botanical-green);
-  font-size: 14px;
+  .section-label { font-size: 12px; }
 }
 
 /* Buttons */
 .btn-primary {
   display: inline-block;
-  background-color: var(--copper-patina);
-  color: var(--ivory-white);
-  padding: 16px 32px;
-  border-radius: var(--radius-subtle);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #F5A623, #FFCA28, #F5A623);
+  background-size: 200% 200%;
+  color: #050A12;
+  padding: 20px 48px;
+  border-radius: 0px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all var(--transition-fast);
   border: none;
   cursor: pointer;
+  box-shadow: 0 0 40px rgba(245, 166, 35, 0.25);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary:hover {
-  background-color: #7A6140;
-  box-shadow: 0 2px 8px rgba(139, 111, 71, 0.3);
+  box-shadow: 0 0 60px rgba(245, 166, 35, 0.4);
+  transform: translateY(-2px);
+  background-position: 100% 100%;
 }
 
 .btn-secondary {
   display: inline-block;
-  background-color: transparent;
-  color: var(--copper-patina);
-  padding: 16px 32px;
-  border-radius: var(--radius-subtle);
-  border: 1px solid var(--copper-patina);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.06em;
+  background: transparent;
+  color: #FFFFFF;
+  padding: 20px 48px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all var(--transition-fast);
   cursor: pointer;
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-secondary:hover {
-  background-color: rgba(139, 111, 71, 0.1);
-}
-
-.btn-secondary.on-dark {
-  color: var(--copper-patina);
-  border-color: var(--copper-patina);
+  border-color: #F5A623;
+  color: #F5A623;
+  box-shadow: 0 0 30px rgba(245, 166, 35, 0.15);
 }
 
 /* Cards */
 .card {
-  background-color: var(--card-light);
-  padding: 32px;
-  border-radius: var(--radius-subtle);
+  background: #0D1520;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 48px;
+  border-radius: 0px;
+  position: relative;
+  overflow: hidden;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card.on-dark {
-  background-color: var(--card-dark);
-}
-
-.card.border-genomic {
-  border-left: 3px solid var(--meridian-blue);
-}
-
-.card.border-microbiome {
-  border-left: 3px solid var(--botanical-green);
-}
-
-.card.border-integrated {
-  border-left: 3px solid var(--convergence-violet);
-}
-
-/* Bridge divider motif */
-.bridge-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: 60px 0;
-}
-
-.bridge-divider::before,
-.bridge-divider::after {
+.card::before {
   content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--radiant-gold), transparent);
+  opacity: 0;
+  transition: opacity 400ms;
 }
 
-.bridge-divider::before {
-  background-color: var(--meridian-blue);
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
 }
 
-.bridge-divider::after {
-  background-color: var(--botanical-green);
+.card:hover::before {
+  opacity: 1;
 }
 
-.bridge-divider-line {
-  width: 200px;
-  height: 1px;
-  background-color: rgba(155, 164, 168, 0.4);
+.card.accent-blue::before {
+  background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
+}
+
+.card.accent-green::before {
+  background: linear-gradient(90deg, transparent, var(--signal-green), transparent);
 }
 
 /* Section backgrounds */
 .section-dark {
-  background-color: var(--obsidian-navy);
-  color: var(--ash-silver);
+  background-color: var(--void-black);
+  color: var(--ice-silver);
 }
 
 .section-dark h1,
 .section-dark h2,
 .section-dark h3 {
-  color: var(--ivory-white);
-}
-
-.section-dark .section-label {
-  color: var(--copper-patina);
+  color: var(--pure-white);
 }
 
 .section-light {
-  background-color: var(--ivory-white);
-  color: var(--slate-graphite);
+  background-color: var(--pure-white);
+  color: var(--text-secondary-light);
 }
 
 .section-light h1,
 .section-light h2,
 .section-light h3 {
-  color: var(--obsidian-navy);
+  color: var(--void-black);
+}
+
+/* Data text */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.gene-name {
+  font-family: var(--font-mono);
+  color: var(--electric-blue);
+  font-size: 14px;
+}
+
+.species-name {
+  font-family: var(--font-mono);
+  color: var(--signal-green);
+  font-size: 14px;
 }
 
 /* Skip to content */
@@ -295,13 +267,13 @@ h3 {
   top: -100px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--meridian-blue);
-  color: var(--ivory-white);
+  background: var(--electric-blue);
+  color: var(--pure-white);
   padding: 12px 24px;
   z-index: 100;
-  font-family: var(--font-sans);
+  font-family: var(--font-primary);
   font-size: 14px;
-  border-radius: var(--radius-subtle);
+  border-radius: 0px;
   transition: top 0.2s;
 }
 
@@ -315,21 +287,21 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--meridian-blue);
+  outline: 2px solid var(--electric-blue);
   outline-offset: 2px;
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--obsidian-navy);
+  background: var(--void-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ash-silver);
+  background: var(--ice-silver);
   border-radius: 4px;
 }
 
@@ -347,18 +319,27 @@ select:focus-visible {
 
 /* Pull quote */
 .pull-quote {
-  font-family: var(--font-body);
-  font-weight: 500;
+  font-family: var(--font-primary);
+  font-weight: 600;
   font-style: italic;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1.5;
-  color: var(--obsidian-navy);
-  border-left: 3px solid var(--copper-patina);
+  color: var(--void-black);
+  border-left: 3px solid var(--radiant-gold);
   padding-left: 32px;
 }
 
 @media (max-width: 767px) {
-  .pull-quote {
-    font-size: 20px;
-  }
+  .pull-quote { font-size: 20px; }
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--radiant-gold);
+  z-index: 9999;
+  transition: width 50ms linear;
 }

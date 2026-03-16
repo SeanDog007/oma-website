@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4, IBM_Plex_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-primary",
   display: "swap",
-  weight: ["300", "400", "600"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
@@ -27,21 +20,21 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ōma Analytics — The Complete Biological Picture",
+  title: "Ōma — Know Yourself. Completely.",
   description:
-    "The first platform to unify genomic variant data with quantitative microbiome testing — purpose-built for functional medicine practitioners.",
+    "The first platform to read your genome and microbiome as one integrated biological system. Tests at cost. Analysis free. Precise, personalized protocols.",
   openGraph: {
-    title: "Ōma Analytics — The Complete Biological Picture",
+    title: "Ōma — Know Yourself. Completely.",
     description:
-      "The first platform to unify genomic variant data with quantitative microbiome testing.",
+      "Your genome and your microbiome — read together for the first time.",
     type: "website",
-    siteName: "Ōma Analytics",
+    siteName: "Ōma",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ōma Analytics — The Complete Biological Picture",
+    title: "Ōma — Know Yourself. Completely.",
     description:
-      "The first platform to unify genomic variant data with quantitative microbiome testing.",
+      "Your genome and your microbiome — read together for the first time.",
   },
 };
 
@@ -51,11 +44,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
+        <ScrollProgress />
         <Navigation />
         <main id="main-content">{children}</main>
         <Footer />
